@@ -4,26 +4,35 @@ package GUI;
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.table.TableColumnModel; // Pourquoi ????
+import Controllers.MaFenetrePrimaireCtrl;
 
 
 public class MaFenetrePrimaire extends JFrame {
 
-    public MaFenetrePrimaire() {
+    private MaFenetrePrimaireCtrl controller;
+
+    public MaFenetrePrimaire(MaFenetrePrimaireCtrl controller) {
+        this.controller = controller;
+
         setTitle("Accueil");
         setSize(900, 450);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
 
         // Barre de menu
         JMenuBar menuBar = new JMenuBar();
-        JMenu menu1 = new JMenu("Menu 1");
+        JMenu menu1 = new JMenu("Fermeture");
         JMenuItem menuItem11 = new JMenuItem("Item 1.1");
         JMenuItem menuItem12 = new JMenuItem("Item 1.2");
         menu1.add(menuItem11);
         menu1.add(menuItem12);
 
-        JMenu menu2 = new JMenu("Menu 2");
+        JMenu menu2 = new JMenu("Options et aide");
         JMenuItem menuItem21 = new JMenuItem("Item 2.1");
-        JMenuItem menuItem22 = new JMenuItem("Item 2.2");
+        JMenuItem menuItem22 = new JMenuItem("A propos");
+        menuItem22.setActionCommand("openAboutWindow");
+        menuItem22.addActionListener(controller);
         menu2.add(menuItem21);
         menu2.add(menuItem22);
 
@@ -73,107 +82,89 @@ public class MaFenetrePrimaire extends JFrame {
 
 
         JPanel buttonsPanel = new JPanel(new GridLayout(2, 6));
-        for (int i = 1; i <= 12; i++) {
-            if (i == 1)
-            {
+        for (int i = 1; i <= 12; i++) { //On aurait pu se passer du for mais plus lisible pour nous
+            if (i == 1) {
                 JButton button = new JButton("+ Client");
+                button.setActionCommand("openNewClientWindow");
+                button.addActionListener(controller);
                 button.setBackground(Color.YELLOW);
                 Insets margin = new Insets(10, 10, 10, 10);
                 button.setMargin(margin);
                 button.setPreferredSize(new Dimension(button.getPreferredSize().width * 5 / 10, button.getPreferredSize().height / 2));
                 buttonsPanel.add(button);
-            }
-            else if (i == 2)
-            {
+            } else if (i == 2) {
                 JButton button = new JButton("+ Article");
+                button.setActionCommand("openNewArticleWindow");
+                button.addActionListener(controller);
                 button.setBackground(Color.YELLOW);
                 Insets margin = new Insets(10, 10, 10, 10);
                 button.setMargin(margin);
                 button.setPreferredSize(new Dimension(button.getPreferredSize().width * 5 / 10, button.getPreferredSize().height / 2));
                 buttonsPanel.add(button);
-            }
-            else if (i == 3)
-            {
+            } else if (i == 3) {
                 JButton button = new JButton("PRESS");
                 button.setBackground(Color.pink);
                 Insets margin = new Insets(10, 10, 10, 10);
                 button.setMargin(margin);
                 button.setPreferredSize(new Dimension(button.getPreferredSize().width * 5 / 10, button.getPreferredSize().height / 2));
                 buttonsPanel.add(button);
-            }
-            else if (i == 4)
-            {
+            } else if (i == 4) {
                 JButton button = new JButton("EAUX");
                 button.setBackground(Color.pink);
                 Insets margin = new Insets(10, 10, 10, 10);
                 button.setMargin(margin);
                 button.setPreferredSize(new Dimension(button.getPreferredSize().width * 5 / 10, button.getPreferredSize().height / 2));
                 buttonsPanel.add(button);
-            }
-            else if (i == 5)
-            {
+            } else if (i == 5) {
                 JButton button = new JButton("TABAC");
                 button.setBackground(Color.pink);
                 Insets margin = new Insets(10, 10, 10, 10);
                 button.setMargin(margin);
                 button.setPreferredSize(new Dimension(button.getPreferredSize().width * 5 / 10, button.getPreferredSize().height / 2));
                 buttonsPanel.add(button);
-            }
-            else if (i == 6)
-            {
+            } else if (i == 6) {
                 JButton button = new JButton("FRUITS");
                 button.setBackground(Color.pink);
                 Insets margin = new Insets(10, 10, 10, 10);
                 button.setMargin(margin);
                 button.setPreferredSize(new Dimension(button.getPreferredSize().width * 5 / 10, button.getPreferredSize().height / 2));
                 buttonsPanel.add(button);
-            }
-            else if (i == 7)
-            {
+            } else if (i == 7) {
                 JButton button = new JButton("<html><center>LEGU<br>MES</center></html>");
                 button.setBackground(Color.pink);
                 Insets margin = new Insets(10, 10, 10, 10);
                 button.setMargin(margin);
                 button.setPreferredSize(new Dimension(button.getPreferredSize().width * 5 / 10, button.getPreferredSize().height / 2));
                 buttonsPanel.add(button);
-            }
-            else if (i == 8)
-            {
+            } else if (i == 8) {
                 JButton button = new JButton("<html><center>ALCO<br>OLS</center></html>");
                 button.setBackground(Color.pink);
                 Insets margin = new Insets(10, 10, 10, 10);
                 button.setMargin(margin);
                 button.setPreferredSize(new Dimension(button.getPreferredSize().width * 5 / 10, button.getPreferredSize().height / 2));
                 buttonsPanel.add(button);
-            }
-            else if (i == 9)
-            {
+            } else if (i == 9) {
                 JButton button = new JButton("LOTTO");
                 button.setBackground(Color.pink);
                 Insets margin = new Insets(10, 10, 10, 10);
                 button.setMargin(margin);
                 button.setPreferredSize(new Dimension(button.getPreferredSize().width * 5 / 10, button.getPreferredSize().height / 2));
                 buttonsPanel.add(button);
-            }
-            else if (i == 10)
-            {
+            } else if (i == 10) {
                 JButton button = new JButton("<html><center>DIVERS<br>6 %</center></html>");
                 button.setBackground(Color.pink);
                 Insets margin = new Insets(10, 10, 10, 10);
                 button.setMargin(margin);
                 button.setPreferredSize(new Dimension(button.getPreferredSize().width * 5 / 10, button.getPreferredSize().height / 2));
                 buttonsPanel.add(button);
-            }
-            else if (i == 11)
-            {
+            } else if (i == 11) {
                 JButton button = new JButton("<html><center>DIVERS<br>21 %</center></html>");
                 button.setBackground(Color.pink);
                 Insets margin = new Insets(10, 10, 10, 10);
                 button.setMargin(margin);
                 button.setPreferredSize(new Dimension(button.getPreferredSize().width * 5 / 10, button.getPreferredSize().height / 2));
                 buttonsPanel.add(button);
-            }
-            else {
+            } else {
                 JButton button = new JButton("Z");
                 button.setBackground(Color.CYAN);
                 Insets margin = new Insets(10, 10, 10, 10);
@@ -184,7 +175,6 @@ public class MaFenetrePrimaire extends JFrame {
 
 
         }
-
 
 
         rightPanel.add(buttonsPanel, BorderLayout.CENTER);
@@ -203,9 +193,30 @@ public class MaFenetrePrimaire extends JFrame {
 
         JPanel yellowButtonsPanel = new JPanel(new GridLayout(4, 1));
         for (int i = 1; i <= 4; i++) {
-            JButton yellowButton = new JButton("Bouton " + i);
-            yellowButton.setBackground(Color.YELLOW);
-            yellowButtonsPanel.add(yellowButton);
+            if (i == 1)
+            {
+                JButton yellowButton = new JButton("C. CREDIT");
+                yellowButton.setBackground(Color.YELLOW);
+                yellowButtonsPanel.add(yellowButton);
+            }
+            if (i == 1)
+            {
+                JButton yellowButton = new JButton("CHEQUES");
+                yellowButton.setBackground(Color.YELLOW);
+                yellowButtonsPanel.add(yellowButton);
+            }
+            if (i == 1)
+            {
+                JButton yellowButton = new JButton("MAESTRO");
+                yellowButton.setBackground(Color.YELLOW);
+                yellowButtonsPanel.add(yellowButton);
+            }
+            if (i == 1)
+            {
+                JButton yellowButton = new JButton("CASH");
+                yellowButton.setBackground(Color.YELLOW);
+                yellowButtonsPanel.add(yellowButton);
+            }
         }
         lowerRightPanel.add(Box.createRigidArea(new Dimension(20, 0))); // Modifier la valeur 10 à 20 pour déplacer les boutons jaunes plus à droite
         lowerRightPanel.add(yellowButtonsPanel);
@@ -221,7 +232,10 @@ public class MaFenetrePrimaire extends JFrame {
 
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new MaFenetrePrimaire());
+        SwingUtilities.invokeLater(() -> {
+            MaFenetrePrimaireCtrl controller = new MaFenetrePrimaireCtrl();
+            new MaFenetrePrimaire(controller);
+        });
     }
 
     {
@@ -243,3 +257,5 @@ public class MaFenetrePrimaire extends JFrame {
         panel1.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
     }
 }
+
+

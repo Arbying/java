@@ -28,6 +28,10 @@ public class APropos extends JFrame {
 
         // Bouton "OK"
         JButton okButton = new JButton("OK");
+            //On ne va pas s'amuser à jouer au MVC pour si peu.
+        okButton.addActionListener(e -> {
+            dispose(); // Ferme la fenêtre
+        });
         JPanel buttonsPanel = new JPanel(new FlowLayout());
         buttonsPanel.add(okButton);
         mainPanel.add(buttonsPanel, BorderLayout.SOUTH);

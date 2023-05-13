@@ -9,7 +9,7 @@ public class NewArticle extends JFrame {
         setTitle("Nouvel article");
         setSize(450, 200);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         // Layout principal
         JPanel mainPanel = new JPanel(new GridLayout(4, 2));

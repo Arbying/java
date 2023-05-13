@@ -10,7 +10,7 @@ public class NewClient extends JFrame {
         setTitle("Nouveau client");
         setSize(450, 200);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         // Layout principal
         JPanel mainPanel = new JPanel(new GridLayout(6, 2));
