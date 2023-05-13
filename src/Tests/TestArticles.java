@@ -18,6 +18,11 @@ public class TestArticles {
         }
 
         article1.setPrix(49.99f);
+        article1.setQu(5);
+        article1.setTotalLigne(article1.getQu(), article1.getPrix());
         System.out.println("Le prix de l'article 1 a été modifié : " + article1.toString());
+        System.out.println("Total de la ligne de l'article 1 : " + article1.getTotalLigne());
     }
+
+
 }

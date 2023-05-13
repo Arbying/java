@@ -8,17 +8,17 @@ public class Ticket implements Bravo {
     private Date dateTicket;
     private int numTicket;
     private Client client;
-    private Vector<ArticleTicket> articleTickets;
-    private int sousTotal;
-    private int reduction;
+    private Vector<Article> articles;
+    private float sousTotal;
+    private float reduction;
     private float total;
     private int pointsTicket;
 
-    public Ticket(int numTicket, Client client, Vector<ArticleTicket> articleTickets) {
+    public Ticket(int numTicket, Client client, Vector<Article> articles) {
         this.dateTicket = new Date();
         this.numTicket = numTicket;
         this.client = client;
-        this.articleTickets = articleTickets;
+        this.articles = articles;
         calculSousTotal();
         calculReduction();
         calculTotal();
@@ -37,15 +37,15 @@ public class Ticket implements Bravo {
         return client;
     }
 
-    public Vector<ArticleTicket> getArticleTickets() {
-        return articleTickets;
+    public Vector<Article> getArticleTickets() {
+        return articles;
     }
 
-    public int getSousTotal() {
+    public float getSousTotal() {
         return sousTotal;
     }
 
-    public int getReduction() {
+    public float getReduction() {
         return reduction;
     }
 
@@ -58,14 +58,14 @@ public class Ticket implements Bravo {
     }
 
     public void calculSousTotal() {
-        for (ArticleTicket articleTicket : articleTickets) {
-            sousTotal += articleTicket.getQuantite() * articleTicket.getArticle().getPrix();
+        for (Article article : articles) {
+            sousTotal += article.getQu() * article.getPrix();
         }
     }
 
     public void calculReduction() {
         if (sousTotal >= 250) {
-            reduction = (int) (sousTotal * 0.1);
+            reduction = sousTotal * 0.1f;
         }
     }
 
@@ -76,8 +76,8 @@ public class Ticket implements Bravo {
     public void calculPointsTicket() {
         // Calcul du nombre de points générés par les articles achetés
         int pointsArticles = 0;
-        for (ArticleTicket articleTicket : articleTickets) {
-            pointsArticles += articleTicket.getQuantite() * articleTicket.getArticle().getPoints();
+        for (Article article : articles) {
+            pointsArticles += article.getQu() * article.getPoints();
         }
 
         // Calcul du nombre total de points du ticket
@@ -89,8 +89,8 @@ public class Ticket implements Bravo {
         String str = "Ticket n°" + numTicket + "\n";
         str += "Date : " + dateTicket + "\n\n";
         str += "Articles : \n";
-        for (ArticleTicket articleTicket : articleTickets) {
-            str += "\t" + articleTicket + "\n";
+        for (Article article : articles) {
+            str += "\t" + article + "\n";
         }
         str += "\n";
         if (client != null) {

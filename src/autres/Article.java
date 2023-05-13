@@ -4,15 +4,17 @@ public class Article {
     private long codeBarre;
     private String intitule;
     private float prix;
-    private int stock;
+    private int qu;
     private int points;
+    private float totalLigne;
 
-    public Article(long codeBarre, String intitule, float prix, int stock, int points) {
+    public Article(long codeBarre, String intitule, float prix, int qu, int points) {
         this.codeBarre = codeBarre;
         this.intitule = intitule;
         this.prix = prix;
-        this.stock = stock;
+        this.qu = qu;
         this.points = points;
+        this.totalLigne = prix * (float) qu;
     }
 
     public long getCodeBarre() {
@@ -39,12 +41,12 @@ public class Article {
         this.prix = prix;
     }
 
-    public int getStock() {
-        return stock;
+    public int getQu() {
+        return qu;
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
+    public void setQu(int qu) {
+        this.qu = qu;
     }
 
     public int getPoints() {
@@ -55,10 +57,18 @@ public class Article {
         this.points = points;
     }
 
+    public  float getTotalLigne(){
+        return totalLigne;
+    }
+
+    public void setTotalLigne(int qu, float prix){
+        this.totalLigne = (float) qu * prix;
+    }
+
     @Override
     public String toString() {
         return "Code barre : " + codeBarre + ", intitulé : " + intitule + ", prix : " + prix +
-                ", stock : " + stock + ", points : " + points;
+                ", qu : " + qu + ", points : " + points + ", Total ligne : " + totalLigne;
     }
 
     @Override
